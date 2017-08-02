@@ -10,9 +10,7 @@ Example in Haskell:
 encode "aaaabccaadeeee"
 [(4,'a'),(1,'b'),(2,'c'),(2,'a'),(1,'d'),(4,'e')]
 -}
-pack :: (Eq a) => [a] -> [[a]]
-pack [] = []
-pack (x:xs) = (x : takeWhile (==x) xs) : pack (dropWhile (==x) xs)
+import Data.List
 
 encode :: (Eq a) => [a] -> [(Int,a)]
-encode = map (\l -> (length l,head l)) . pack
+encode = map (\l -> (length l,head l)) . group
