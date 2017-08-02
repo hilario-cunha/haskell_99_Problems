@@ -11,8 +11,6 @@ Example in Haskell:
              'a', 'd', 'e', 'e', 'e', 'e']
 ["aaaa","b","cc","aa","d","eeee"]
 -}
-import Data.List
-
 pack :: Eq a => [a] -> [[a]]
 pack = reverse . foldl f []
   where f acc x = if((acc /= []) && (head (head acc)) == x) then ((x:(head acc)):(tail acc)) else [x]:acc
