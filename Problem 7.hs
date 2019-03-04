@@ -34,9 +34,15 @@ flatten' (Elem x) = [x]
 flatten' (List []) = []
 flatten' (List (x:xs)) = flatten' x ++ flatten' (List xs) 
 
+flatten'' :: NestedList a -> [a]
+flatten'' (Elem x) = [x]
+flatten'' (List x) = concatMap flatten'' x
 
-
-
+flatten2 :: NestedList a -> [a]
+flatten2 a = flt' a []
+  where flt' (Elem x)      xs = x:xs
+        flt' (List [])     xs = xs
+        flt' (List (x:ls)) xs = flt' x (flt' (List ls) xs)
 
 
 
