@@ -24,4 +24,7 @@ elementAt' xs i
 elementAt'' :: [a] -> Int -> a
 elementAt'' [] i = error "Index out of bounds"
 elementAt'' (x:_) 1 = x
+elementAt'' _ l | l < 1  = error "Index out of bounds"
 elementAt'' (x:xs) n = elementAt'' xs (n-1)
+
+elementAt''' = flip ((last .) . take)
