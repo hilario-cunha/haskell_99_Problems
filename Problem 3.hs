@@ -21,3 +21,7 @@ elementAt' xs i
   | i < 1 = error "Index out of bounds"
   | otherwise = xs !! (i - 1)
 
+elementAt'' :: [a] -> Int -> a
+elementAt'' [] i = error "Index out of bounds"
+elementAt'' (x:_) 1 = x
+elementAt'' (x:xs) n = elementAt'' xs (n-1)
